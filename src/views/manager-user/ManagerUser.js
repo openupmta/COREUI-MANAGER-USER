@@ -11,13 +11,15 @@ import {
   CFormGroup,
   CInput,
   CLabel,
-  CSelect
+  CSelect,
+  CButton
 } from '@coreui/react'
 import ManagerUserService from "../../services/manager_user/ManagerUserService";
 import { useForm } from "react-hook-form";
 // import usersData from '../users/UsersData'
 import FormEditUser from './FormEditUser';
 import Toaster from './NotificationManagerUser';
+import ModalCreateUser from './ModalCreateUser';
 
 const getBadge = status => {
   switch (status) {
@@ -34,6 +36,7 @@ const fields = [{ key: 'username', label: 'Name' }, { key: 'create_date', label:
 const ManagerUser = () => {
   const [collapsed, setCollapsed] = React.useState(true)
   const [showCard, setShowCard] = React.useState(false)
+  const [showModal, setShowModal] = React.useState(false)
 
   const initialNotification = {
     time_out: 3000,
@@ -179,6 +182,7 @@ const ManagerUser = () => {
                         </CCol>
                       </CFormGroup>
                     </CCol>
+                    <CButton color="success" onClick={() => setShowModal(!showModal)} className="mr-1">Success modal</CButton>
                   </CRow>
                 </CForm>
               </CCardHeader>
@@ -223,7 +227,14 @@ const ManagerUser = () => {
           <Toaster
             notification={notification}
           />
+          
         </CRow>
+        <ModalCreateUser 
+            showModal={showModal}
+            setModalCreate={setShowModal}
+            itemsRole={itemsRole}
+            itemsStatus={itemsStatus}
+          />
       </React.Fragment>
     </>
   )

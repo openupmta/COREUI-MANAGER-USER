@@ -8,19 +8,6 @@ import {
 } from '@coreui/react'
 
 const Toaster = (props) => {
-
-    const positions = [
-        'static',
-        'top-left',
-        'top-center',
-        'top-right',
-        'top-full',
-        'bottom-left',
-        'bottom-center',
-        'bottom-right',
-        'bottom-full'
-    ]
-
     const [toasts, setToasts] = useState(
         { position: 'top-right', time_out: 3000, type: 'Success' }
     )
